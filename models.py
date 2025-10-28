@@ -5,14 +5,12 @@ class Patient(Base):
     __tablename__ = "patients"
 
     id = Column(Integer, primary_key=True, index=True)
-    age = Column(Integer)
-    gender = Column(String)
-    status = Column(String)
-    glucose = Column(Float)
-    pressurhigh = Column(Integer)
-    pressurlow = Column(Integer)
-    kcm = Column(Float)
-    troponin = Column(Float)  
-    impulse = Column(Integer)
-    status = Column(String)
-
+    age = Column(Integer, nullable=False)
+    gender = Column(Integer, nullable=False)
+    pressurhigh = Column(Float, nullable=False)
+    pressurlow = Column(Float, nullable=False)
+    glucose = Column(Float, nullable=False)
+    kcm = Column(Float, nullable=False)
+    troponin = Column(Float, nullable=False)
+    impluse = Column(Integer, nullable=False)
+    status = Column(String, nullable=False)
