@@ -1,5 +1,6 @@
 from pydantic import BaseModel, Field, conint, confloat, constr
 
+# Schéma pour POST /patients (création)
 
 class PatientCreate(BaseModel):
     age: conint(ge=0, le=120) = Field(..., description="Âge du patient entre 0 et 120")
@@ -18,3 +19,9 @@ class PatientCreate(BaseModel):
 
     implusem: conint(ge=0) = Field(..., description="Fréquence cardiaque / impulsion")
 
+# Schéma pour GET /patients (réponse avec id)
+class Patient(PatientCreate):
+    id: int
+
+class Config:
+        orm_mode = True
