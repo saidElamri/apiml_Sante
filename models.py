@@ -14,3 +14,5 @@ class Patient(Base):
     kcm = Column(Float)
     troponin = Column(Float)  
     impulse = Column(Integer)
+
+

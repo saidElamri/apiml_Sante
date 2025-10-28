@@ -17,7 +17,7 @@ class PatientCreate(BaseModel):
 
     troponin: confloat(ge=0) = Field(..., description="Taux de tropin")
 
-    implusem: conint(ge=0) = Field(..., description="Fréquence cardiaque / impulsion")
+    impluse: conint(ge=0) = Field(..., description="Fréquence cardiaque / impulsion")
 
 # Schéma pour GET /patients (réponse avec id)
 class Patient(PatientCreate):

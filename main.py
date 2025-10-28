@@ -36,7 +36,7 @@ def get_patients(db: Session = Depends(get_db)):
 @app.post("/predict_risk/")
 def create_patient(patient: schemas.PatientCreate, db: Session = Depends(get_db)):
     # Convert input to numpy array for prediction
-    features = np.array([[patient.age, patient.gender, patient.pressurehight, patient.pressurelow,
+    features = np.array([[patient.age, patient.gender, patient. pressurhigh, patient.pressurlow,
                           patient.glucose, patient.kcm, patient.troponin, patient.impluse]])
     prediction = model.predict(features)[0]
     risk_status = le.inverse_transform([prediction])[0]
