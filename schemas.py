@@ -22,6 +22,11 @@ class PatientCreate(BaseModel):
 # Schéma pour GET /patients (réponse avec id)
 class Patient(PatientCreate):
     id: int
-
+    status: str
 class Config:
         orm_mode = True
+
+class PredictionResponse(BaseModel):
+    prediction_code: int
+    risk_status: str
+    message: str

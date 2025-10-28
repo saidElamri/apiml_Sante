@@ -34,13 +34,13 @@ def create_patient(patient: schemas.PatientCreate, db: Session = Depends(get_db)
 def get_patients(db: Session = Depends(get_db)):
     return crude.get_patients(db)
 @app.post("/predict_risk/")
-def create_patient(patient: schemas.PatientCreate, db: Session = Depends(get_db)):
+def predict_risk(patient: schemas.PatientCreate, db: Session = Depends(get_db)):
     # Convert input to numpy array for prediction
     features = np.array([[patient.age, patient.gender, patient. pressurhigh, patient.pressurlow,
                           patient.glucose, patient.kcm, patient.troponin, patient.impluse]])
     prediction = model.predict(features)[0]
     risk_status = le.inverse_transform([prediction])[0]
-
+    db_patient = crude.create_patient(db=db, patient=patient, status=risk_status)
     return {
         "prediction_code": int(prediction),
         "risk_status": risk_status,
