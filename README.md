@@ -1,6 +1,6 @@
 # 🚀 Planification du Projet d'API de Score de Risque Cardiovasculaire
 # 1. 🤝 Organisation et Collaboration
-Le travail en binôme sera réparti comme suit, avec une méthodologie Git/GitHub claire :
+Le travail  sera réparti comme suit, avec une méthodologie Git/GitHub claire :
 Branche Principale : main (Contient la version stable et déployable).
 Fusion : Les branches de fonctionnalités (feature/api, feature/ml) seront fusionnées dans main après validation des tests et revue de code.
 # 2. 💻 Développement Web & Base de Données (Backend)
@@ -64,3 +64,4 @@ Vérifier que la réponse est conforme au schéma RiskPrediction (score est un f
 
 # B. Documentation Interactive (Swagger)
 FastAPI génère automatiquement la documentation interactive (Swagger UI) à l'adresse /docs par défaut.
+
