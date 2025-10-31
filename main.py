@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 import numpy as np, joblib
 import models, crud, schemas
 from database import engine, get_db
+from fastapi import FastAPI, Depends, HTTPException
 from schemas import PatientCreate, PredictionResponse
 
 app = FastAPI(title="Health Prediction API")
@@ -31,6 +32,16 @@ def create_patient_endpoint(patient: PatientCreate, db: Session = Depends(get_db
 def get_patients_endpoint(db: Session = Depends(get_db)):
     return crud.get_patients(db)
 
+
+
+@app.get("/patients/{id}", response_model=schemas.Patient)
+def get_patient_endpoint(id: int, db: Session = Depends(get_db)):
+    patient = crud.get_one(db, id)
+    if not patient:
+        raise HTTPException(status_code=404, detail="Patient not found")
+    return patient
+
+
 @app.post("/predict_risk/", response_model=PredictionResponse)
 def predict_risk(patient: PatientCreate, db: Session = Depends(get_db)):
     features = np.array([[patient.age, patient.gender, patient.pressurhigh, patient.pressurlow,
@@ -47,3 +58,7 @@ def predict_risk(patient: PatientCreate, db: Session = Depends(get_db)):
         "message": f"Le modèle estime que le patient présente un {risk_status}"
     }
 
+@app.put("/patients/{id}", response_model=schemas.Patient)
+def update_patient_endpoint(id: int, patient: schemas.PatientCreate, db: Session = Depends(get_db)):
+    result = crud.update_patient(db, id, patient)
+    return result
