@@ -389,15 +389,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [scikit-learn Documentation](https://scikit-learn.org/)
 - [Pydantic Documentation](https://pydantic-docs.helpmanual.io/)
 
-## 📞 Support
-
-For questions, issues, or contributions:
-
-1. Check the [Issues](https://github.com/your-username/cardiovascular-risk-api/issues) page
-2. Create a new issue for bugs or feature requests
-3. Join discussions in existing issues
-4. Contact the development team
-
----
 
 **Built with ❤️ for healthcare innovation and machine learning research**
+
